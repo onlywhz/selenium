@@ -3,17 +3,15 @@ package com.selenium.utils;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 
-import com.selenium.main.TestMain;
+import com.selenium.main.client.TestMain;
+import com.selenium.tests.imlp.SeleniumCommand;
 
 public class SlmTstUtil {
 	private static String sysDate;
-	public static final String WORK_PATH_HOME_KEY = "webdriver.work.path";
-	public static final String WORK_IMG_HOME_KEY = "webdriver.work.img";
-	private static String imgPath;
-	private static String workPath;
-	private static String workFile;
-
+	private static SeleniumCommand sc;
+	
 	static {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
 		sysDate = df.format(new Date());
@@ -60,29 +58,12 @@ public class SlmTstUtil {
 		return sysDate;
 	}
 
-	public static String getImgPath() {
-		return imgPath;
-	}
-	
-	public static void setImgPath(String imgPath) {
-		SlmTstUtil.imgPath = imgPath;
+	public static SeleniumCommand getSc() {
+		return sc;
 	}
 
-	public static String getWorkPath() {
-		return workPath;
+	public static void setSc(SeleniumCommand sc) {
+		SlmTstUtil.sc = sc;
 	}
-
-	public static void setWorkPath(String workPath) {
-		SlmTstUtil.workPath = workPath;
-	}
-
-	public static String getWorkFile() {
-		return workFile;
-	}
-
-	public static void setWorkFile(String workFile) {
-		SlmTstUtil.workFile = workFile;
-	}
-	
 	
 }
