@@ -13,17 +13,20 @@ public class AllDefaultPossibilitiesBuilder extends RunnerBuilder {
 	private final boolean fCanUseSuiteMethod;
 
 	public AllDefaultPossibilitiesBuilder(boolean canUseSuiteMethod) {
-		fCanUseSuiteMethod = canUseSuiteMethod;
+		fCanUseSuiteMethod= canUseSuiteMethod;
 	}
 
 	@Override
 	public Runner runnerForClass(Class<?> testClass) throws Throwable {
-		List<RunnerBuilder> builders = Arrays.asList(ignoredBuilder(),
-				annotatedBuilder(), seleniumBuilder(), suiteMethodBuilder(),
-				junit3Builder(), junit4Builder());
+		List<RunnerBuilder> builders= Arrays.asList(
+				ignoredBuilder(),
+				annotatedBuilder(),
+				suiteMethodBuilder(),
+				junit3Builder(),
+				junit4Builder());
 
 		for (RunnerBuilder each : builders) {
-			Runner runner = each.safeRunnerForClass(testClass);
+			Runner runner= each.safeRunnerForClass(testClass);
 			if (runner != null)
 				return runner;
 		}
@@ -50,9 +53,5 @@ public class AllDefaultPossibilitiesBuilder extends RunnerBuilder {
 		if (fCanUseSuiteMethod)
 			return new SuiteMethodBuilder();
 		return new NullBuilder();
-	}
-
-	protected RunnerBuilder seleniumBuilder() {
-		return new SeleniumBuilder();
 	}
 }

@@ -2,7 +2,6 @@ package com.selenium.tests;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.*;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import com.selenium.consts.BrowerType;

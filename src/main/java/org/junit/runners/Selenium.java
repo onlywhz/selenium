@@ -21,9 +21,6 @@ import org.junit.runners.model.RunnerBuilder;
 
 import com.selenium.consts.BrowerType;
 import com.selenium.main.client.TestCommand;
-import com.selenium.tests.TestChrome;
-import com.selenium.tests.TestFirefox;
-import com.selenium.tests.TestIE;
 
 public class Selenium extends ParentRunner<Runner> {
 
