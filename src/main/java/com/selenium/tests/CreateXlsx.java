@@ -89,6 +89,9 @@ public class CreateXlsx {
 		List<File> pngs = new ArrayList<File>();
 		File file = new File(filePath);
 		File[] childFiles = file.listFiles();
+		if(childFiles==null){
+			return pngs;
+		}
 		for (File childFile : childFiles) {
 			if (!childFile.isDirectory()) {
 				String childFilePath = childFile.getPath();

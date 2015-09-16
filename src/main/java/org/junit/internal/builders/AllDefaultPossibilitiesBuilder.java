@@ -22,6 +22,7 @@ public class AllDefaultPossibilitiesBuilder extends RunnerBuilder {
 				ignoredBuilder(),
 				annotatedBuilder(),
 				suiteMethodBuilder(),
+				seleniumBuilder(),
 				junit3Builder(),
 				junit4Builder());
 
@@ -53,5 +54,9 @@ public class AllDefaultPossibilitiesBuilder extends RunnerBuilder {
 		if (fCanUseSuiteMethod)
 			return new SuiteMethodBuilder();
 		return new NullBuilder();
+	}
+	
+	protected RunnerBuilder seleniumBuilder() {
+		return new SeleniumBuilder();
 	}
 }

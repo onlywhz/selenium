@@ -10,7 +10,6 @@ import com.selenium.utils.SlmTstUtil;
 
 public class BeforeTest {
 	private volatile static BeforeTest beforeTest;
-	private static final String ENV_PATH = "webdriver.evn.path";
 	private BeforeTest(String settingsString) {
 		Properties properties = new Properties();
 		try {
@@ -18,7 +17,7 @@ public class BeforeTest {
 			properties.load(settingsFile);
 			settingsFile.close();
 			SettingsUtil.init(properties);
-			setEnv(SlmTstUtil.encodePathString(String.valueOf(properties.get(ENV_PATH))));
+			setEnv("src/main/resources/env.properties");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
