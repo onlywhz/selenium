@@ -14,7 +14,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.selenium.consts.BrowerType;
-import com.selenium.main.client.TestMain;
+import com.selenium.utils.SettingsUtil;
 import com.selenium.utils.SlmTstUtil;
 import com.selenium.utils.SnapImg;
 
@@ -26,7 +26,6 @@ public abstract class ATest {
 	protected StringBuffer verificationErrors = new StringBuffer();
 	protected BrowerType browerType;
 	protected SnapImg snapImg;
-
 	protected boolean isElementPresent(By by) {
 		try {
 			driver.findElement(by);
@@ -71,9 +70,11 @@ public abstract class ATest {
 	
 	@Test
 	public void test() throws Exception {
-		snapImg=new SnapImg((TakesScreenshot)driver,browerType);
-		
+		snapImg=new SnapImg((TakesScreenshot)driver,browerType);	
 		SlmTstUtil.getSc().testCode(driver, baseUrl,snapImg);
+		if(SettingsUtil.getXlsFlg()){
+			SlmTstUtil.getCx().addImgs(browerType);
+		}
 	}
 
 	@After

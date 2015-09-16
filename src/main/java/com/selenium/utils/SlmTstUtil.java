@@ -3,21 +3,21 @@ package com.selenium.utils;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Properties;
 
-import com.selenium.main.client.TestMain;
+import com.selenium.tests.CreateXlsx;
 import com.selenium.tests.imlp.SeleniumCommand;
 
 public class SlmTstUtil {
 	private static String sysDate;
 	private static SeleniumCommand sc;
+	private static CreateXlsx cx;
 	
-	static {
+	public static void initSysDate() {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
 		sysDate = df.format(new Date());
 	}
 
-	public static boolean createDir(String... dirPaths) throws Exception {
+	public static boolean createDir(String... dirPaths) {
 		StringBuilder sb = new StringBuilder();
 		for (String path : dirPaths) {
 			sb.append(path);
@@ -47,11 +47,12 @@ public class SlmTstUtil {
 		if (dirPath == null) {
 			return null;
 		}
+		String result=dirPath;
 		String os = System.getProperty("os.name").toLowerCase();
-		if (os.indexOf("windows") > 0) {
-			dirPath.replace("/", "\\");
+		if (os.indexOf("windows") > -1) {
+			result=dirPath.replace("/", "\\");
 		}
-		return dirPath;
+		return result;
 	}
 
 	public static String getSysDate() {
@@ -65,5 +66,16 @@ public class SlmTstUtil {
 	public static void setSc(SeleniumCommand sc) {
 		SlmTstUtil.sc = sc;
 	}
-	
+
+	public static CreateXlsx getCx() {
+		return cx;
+	}
+
+	public static void setCx(CreateXlsx cx) {
+		SlmTstUtil.cx = cx;
+	}
+
+	public static void setSysDate(String sysDate) {
+		SlmTstUtil.sysDate = sysDate;
+	}
 }

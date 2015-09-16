@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -12,7 +11,6 @@ import com.selenium.consts.BrowerType;
 
 public class SnapImg {
 	private int filenum;
-	private static Logger logger = Logger.getLogger(SnapImg.class);
 	private TakesScreenshot drivername;
 	private String imgPath;
 	
@@ -37,9 +35,6 @@ public class SnapImg {
 			// create directory
 			if(!imgDir.isDirectory()){
 				imgDir.mkdirs();
-				if (logger.isInfoEnabled()) {
-					logger.info("Image Directory has created:"+imgPath);
-				}
 			}
 			// create png
 			File desFile = new File(imgPath + "\\" + filenum
@@ -47,12 +42,9 @@ public class SnapImg {
 			FileUtils.copyFile(scrFile, desFile);
 			filenum++;
 		} catch (IOException e) {
-			logger.error("Can't save screenshot");
 			e.printStackTrace();
 		} finally {
-			if (logger.isInfoEnabled()) {
-				logger.info("screen shot finished");
-			}
+		
 		}
 	}
 

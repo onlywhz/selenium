@@ -1,24 +1,16 @@
 package com.selenium.tests;
 
-import static org.junit.Assert.assertTrue;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-import javax.swing.JOptionPane;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import com.selenium.tests.imlp.SeleniumCommand;
 import com.selenium.utils.SettingsUtil;
 import com.selenium.utils.SlmTstUtil;
 
 public class BeforeTest {
 	private volatile static BeforeTest beforeTest;
-
+	private static final String ENV_PATH = "webdriver.evn.path";
 	private BeforeTest(String settingsString) {
 		Properties properties = new Properties();
 		try {
@@ -26,7 +18,7 @@ public class BeforeTest {
 			properties.load(settingsFile);
 			settingsFile.close();
 			SettingsUtil.init(properties);
-			setEnv(SettingsUtil.getEnvPath());
+			setEnv(SlmTstUtil.encodePathString(String.valueOf(properties.get(ENV_PATH))));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -41,7 +33,6 @@ public class BeforeTest {
 		FileInputStream envFile = new FileInputStream(envString);
 		properties.load(envFile);
 		envFile.close();
-
 		Properties sysproperties = System.getProperties(); // system properties
 		properties.putAll(sysproperties);
 		System.setProperties(properties);
