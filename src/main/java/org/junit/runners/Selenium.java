@@ -56,7 +56,7 @@ public class Selenium extends ParentRunner<Runner> {
 	}
 
 	public Selenium(Class<?> klass, RunnerBuilder builder)
-			throws InitializationError {
+			throws InitializationError, ClassNotFoundException {
 		this(builder, klass, getTestClasses(klass));
 	}
 
@@ -72,7 +72,7 @@ public class Selenium extends ParentRunner<Runner> {
 	}
 
 	private static Class<?>[] getTestClasses(Class<?> klass)
-			throws InitializationError {
+			throws InitializationError, ClassNotFoundException {
 		SuiteClasses annotation = klass.getAnnotation(SuiteClasses.class);
 		if (annotation == null)
 			throw new InitializationError(String.format(
@@ -85,14 +85,10 @@ public class Selenium extends ParentRunner<Runner> {
 		for(Class<?> c:testCommands){
 			List<Class<?>> suites = new ArrayList<Class<?>>();
 			suites.add(c);
-			if(browerTypes.contains(BrowerType.IE)){
-				suites.add(TestIE.class);
-			}
-			if(browerTypes.contains(BrowerType.FIREFOX)){
-				suites.add(TestFirefox.class);
-			}
-			if(browerTypes.contains(BrowerType.CHROME)){
-				suites.add(TestChrome.class);
+			for(BrowerType bt: BrowerType.typeAll()){
+				if(browerTypes.contains(bt)){
+					suites.add(bt.getTestClass());
+				}
 			}
 			suiteClasses.addAll(suites);
 		}

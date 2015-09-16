@@ -3,6 +3,7 @@ package com.selenium.tests;
 import static org.junit.Assert.fail;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -67,6 +68,8 @@ public abstract class ATest {
 				true);
 		dc.setVersion("9");
 	}
+	@Before
+	public abstract void setUp() throws Exception;
 	
 	@Test
 	public void test() throws Exception {
@@ -86,4 +89,5 @@ public abstract class ATest {
 		}
 
 	}
+	
 }

@@ -7,7 +7,7 @@ import com.selenium.consts.BrowerType;
 
 
 @RunWith(Selenium.class)
-@Selenium.SuiteClasses(path="com.selenium.main.client.classes",bts={BrowerType.IE,BrowerType.CHROME,BrowerType.FIREFOX})
+@Selenium.SuiteClasses(path="com.selenium.main.client.classes",bts={BrowerType.IPHONE})
 
-public class TestMain {
+public abstract class TestMain {
 }
