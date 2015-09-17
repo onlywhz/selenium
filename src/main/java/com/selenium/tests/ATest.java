@@ -15,7 +15,6 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.selenium.consts.BrowerType;
-import com.selenium.utils.SettingsUtil;
 import com.selenium.utils.SlmTstUtil;
 import com.selenium.utils.SnapImg;
 
@@ -75,9 +74,6 @@ public abstract class ATest {
 	public void test() throws Exception {
 		snapImg=new SnapImg((TakesScreenshot)driver,browerType);	
 		SlmTstUtil.getSc().testCode(driver, baseUrl,snapImg);
-		if(SettingsUtil.getXlsFlg()){
-			SlmTstUtil.getCx().addImgs(browerType);
-		}
 	}
 
 	@After

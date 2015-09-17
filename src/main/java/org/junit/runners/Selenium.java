@@ -21,6 +21,8 @@ import org.junit.runners.model.RunnerBuilder;
 
 import com.selenium.consts.BrowerType;
 import com.selenium.main.client.TestCommand;
+import com.selenium.tests.AfterTest;
+import com.selenium.utils.SettingsUtil;
 
 public class Selenium extends ParentRunner<Runner> {
 
@@ -77,7 +79,7 @@ public class Selenium extends ParentRunner<Runner> {
 					klass.getName()));
 		List<Class<?>> suiteClasses = new ArrayList<Class<?>>();
 		List<BrowerType> browerTypes=Arrays.asList(annotation.bts());
-		
+		SettingsUtil.setBrowerTypes(browerTypes);
 		List<Class<?>> testCommands = getAllClasses(annotation.path(),false);
 		for(Class<?> c:testCommands){
 			List<Class<?>> suites = new ArrayList<Class<?>>();
@@ -87,6 +89,7 @@ public class Selenium extends ParentRunner<Runner> {
 					suites.add(bt.getTestClass());
 				}
 			}
+			suites.add(AfterTest.class);
 			suiteClasses.addAll(suites);
 		}
 		Class<?>[] classes=new Class<?>[]{};

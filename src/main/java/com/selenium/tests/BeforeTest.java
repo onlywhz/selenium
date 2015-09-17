@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Properties;
 
 import com.selenium.utils.SettingsUtil;
-import com.selenium.utils.SlmTstUtil;
 
 public class BeforeTest {
 	private volatile static BeforeTest beforeTest;

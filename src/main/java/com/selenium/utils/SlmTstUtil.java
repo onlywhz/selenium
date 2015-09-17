@@ -4,14 +4,12 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.selenium.tests.CreateXlsx;
 import com.selenium.tests.imlp.SeleniumCommand;
 
 public class SlmTstUtil {
 	private static String sysDate;
 	private static SeleniumCommand sc;
-	private static CreateXlsx cx;
-	
+
 	public static void initSysDate() {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
 		sysDate = df.format(new Date());
@@ -47,10 +45,10 @@ public class SlmTstUtil {
 		if (dirPath == null) {
 			return null;
 		}
-		String result=dirPath;
+		String result = dirPath;
 		String os = System.getProperty("os.name").toLowerCase();
 		if (os.indexOf("windows") > -1) {
-			result=dirPath.replace("/", "\\");
+			result = dirPath.replace("/", "\\");
 		}
 		return result;
 	}
@@ -65,14 +63,6 @@ public class SlmTstUtil {
 
 	public static void setSc(SeleniumCommand sc) {
 		SlmTstUtil.sc = sc;
-	}
-
-	public static CreateXlsx getCx() {
-		return cx;
-	}
-
-	public static void setCx(CreateXlsx cx) {
-		SlmTstUtil.cx = cx;
 	}
 
 	public static void setSysDate(String sysDate) {

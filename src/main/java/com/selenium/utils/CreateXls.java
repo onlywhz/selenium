@@ -1,4 +1,4 @@
-package com.selenium.tests;
+package com.selenium.utils;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 
-
 import org.apache.poi.hssf.usermodel.HSSFClientAnchor;
 import org.apache.poi.hssf.usermodel.HSSFPatriarch;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -24,24 +23,26 @@ import com.selenium.consts.BrowerType;
 import com.selenium.utils.SettingsUtil;
 import com.selenium.utils.SlmTstUtil;
 
-public class CreateXlsx {
+public class CreateXls {
 	private Workbook wb;
 	private String xlsPath;
 	private static final short X_COl = 1;
 
-	public CreateXlsx(String outPath) {
+	public CreateXls(String outPath) {
 		try {
 			SlmTstUtil.createDir(outPath);
-			xlsPath = outPath + "\\" + SettingsUtil.getTestName() + SettingsUtil.XLS_FILE;
+			xlsPath = outPath + "\\" + SettingsUtil.getTestName()
+					+ SettingsUtil.XLS_FILE;
 			wb = new HSSFWorkbook();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void addImgs(BrowerType bt) throws FileNotFoundException,
+	public void addImgs(List<BrowerType> list) throws FileNotFoundException,
 			IOException {
-		writeImgs(SettingsUtil.getImgPath(), bt.getCode());
+		for (BrowerType bt : list)
+			writeImgs(SettingsUtil.getImgPath(), bt.getCode());
 	}
 
 	private boolean writeImgs(String imgPath, String sheetName)
@@ -89,7 +90,7 @@ public class CreateXlsx {
 		List<File> pngs = new ArrayList<File>();
 		File file = new File(filePath);
 		File[] childFiles = file.listFiles();
-		if(childFiles==null){
+		if (childFiles == null) {
 			return pngs;
 		}
 		for (File childFile : childFiles) {
