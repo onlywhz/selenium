@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.hyron.fnc</groupId>
   <artifactId>fnc_selenium</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.0-RELEASE</version>
   <packaging>jar</packaging>
   <name>fnc_selenium</name>
   <description>FNC group selenium Test</description>

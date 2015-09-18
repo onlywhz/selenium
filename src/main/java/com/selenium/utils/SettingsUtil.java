@@ -14,11 +14,11 @@ public class SettingsUtil {
 	public static final String WORK_IMG_HOME_KEY = "webdriver.work.img";
 	public static final String XLS_FILE = ".xls";
 	public static final String OUTPUT_XLS_FLG = "webdriver.output.xls.flag";
-	private static final String DB_NAME = "webdriver.db.name";
-	private static final String DB_PASSWORD = "webdriver.db.password";
-	private static final String DB_SAVE_PATH = "webdriver.db.save.path";
-	private static final String DB_USER = "webdriver.db.user";
-	private static final String DB_URL = "webdriver.db.url";
+//	private static final String DB_NAME = "webdriver.db.name";
+//	private static final String DB_PASSWORD = "webdriver.db.password";
+//	private static final String DB_SAVE_PATH = "webdriver.db.save.path";
+//	private static final String DB_USER = "webdriver.db.user";
+//	private static final String DB_URL = "webdriver.db.url";
 	private static String imgPath;
 	private static String xlsPath;
 	private static boolean xlsFlg;
@@ -76,24 +76,24 @@ public class SettingsUtil {
 				+ SlmTstUtil.getSysDate();
 	}
 	
-	public static String getPw() {
-		return SettingsUtil.getSettings().getProperty(DB_PASSWORD);
-	}
-
-	public static String getDBUrl() {
-		return SettingsUtil.getSettings().getProperty(DB_URL);
-	}
-
-	public static String getDBName() {
-		return SettingsUtil.getSettings().getProperty(DB_NAME);
-	}
-
-	public static String getOutputPath() {
-		return SettingsUtil.getSettings().getProperty(DB_SAVE_PATH);
-	}
-
-	public static String getUser() {
-		return SettingsUtil.getSettings().getProperty(DB_USER);
-	}
+//	public static String getPw() {
+//		return SettingsUtil.getSettings().getProperty(DB_PASSWORD);
+//	}
+//
+//	public static String getDBUrl() {
+//		return SettingsUtil.getSettings().getProperty(DB_URL);
+//	}
+//
+//	public static String getDBName() {
+//		return SettingsUtil.getSettings().getProperty(DB_NAME);
+//	}
+//
+//	public static String getOutputPath() {
+//		return SettingsUtil.getSettings().getProperty(DB_SAVE_PATH);
+//	}
+//
+//	public static String getUser() {
+//		return SettingsUtil.getSettings().getProperty(DB_USER);
+//	}
 
 }
