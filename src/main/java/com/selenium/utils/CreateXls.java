@@ -57,7 +57,7 @@ public class CreateXls {
 		for (File png : pngs) {
 			y = drawImg(patriarch, y, ImageIO.read(new FileInputStream(png)));
 		}
-		// sheet1.setZoom(3, 4);
+		sheet1.setZoom(3, 4);
 		OutputStream stream = new FileOutputStream(xlsPath);
 		wb.write(stream);
 		stream.close();

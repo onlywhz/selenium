@@ -11,7 +11,7 @@ import org.junit.runners.model.RunnerBuilder;
 
 public class AllDefaultPossibilitiesBuilder extends RunnerBuilder {
 	private final boolean fCanUseSuiteMethod;
-
+	
 	public AllDefaultPossibilitiesBuilder(boolean canUseSuiteMethod) {
 		fCanUseSuiteMethod= canUseSuiteMethod;
 	}
@@ -57,6 +57,8 @@ public class AllDefaultPossibilitiesBuilder extends RunnerBuilder {
 	}
 	
 	protected RunnerBuilder seleniumBuilder() {
-		return new SeleniumBuilder();
+		if (fCanUseSuiteMethod)
+			return new SeleniumBuilder();
+		return new NullBuilder();
 	}
 }

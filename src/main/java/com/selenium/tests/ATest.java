@@ -2,6 +2,10 @@ package com.selenium.tests;
 
 import static org.junit.Assert.fail;
 
+
+import java.awt.Robot;
+
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +13,6 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -72,8 +75,10 @@ public abstract class ATest {
 	
 	@Test
 	public void test() throws Exception {
-		snapImg=new SnapImg((TakesScreenshot)driver,browerType);	
+		snapImg=new SnapImg(driver,browerType);
+		moveInit();
 		SlmTstUtil.getSc().testCode(driver, baseUrl,snapImg);
+		Thread.sleep(5000);
 	}
 
 	@After
@@ -85,5 +90,14 @@ public abstract class ATest {
 		}
 
 	}
+	
+	 private void moveInit(){  
+         try{
+         Robot robot = new Robot();
+         robot.mouseMove(0,0);
+         }catch(Exception e){
+             e.printStackTrace();
+         }
+    } 
 	
 }
